@@ -116,6 +116,7 @@ AI assistance was used to accelerate design, iteration, and code generation whil
 ## How to run the workflow
 
 - Intall uv on your machine: https://docs.astral.sh/uv/getting-started/installation/#standalone-installer
+- Update OPEN_AI_KEY in .env file
 - Run following command
 ```
 uv run pr_review_multi_agent.py
