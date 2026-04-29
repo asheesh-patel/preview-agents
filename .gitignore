@@ -9,7 +9,5 @@ wheels/
 # Virtual environments
 .venv
 
-#Env file
-.env
 
 .DS_Store
