@@ -112,3 +112,11 @@ AI assistance was used to accelerate design, iteration, and code generation whil
 5. Refine prompts and output contracts.
 6. Keep code readable, framework-free, and easy to demo.
 
+
+## How to run the workflow
+
+- Intall uv on your machine: https://docs.astral.sh/uv/getting-started/installation/#standalone-installer
+- Run following command
+```
+uv run pr_review_multi_agent.py
+```
