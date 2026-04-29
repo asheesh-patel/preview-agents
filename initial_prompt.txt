@@ -1,0 +1,112 @@
+You are an expert Python engineer and AI architect.
+
+Your task is to build a complete agentic AI system that performs pull request (PR) code reviews using a multi-agent workflow.
+
+The goal is to demonstrate clear agent separation, structured reasoning, and orchestration — NOT a single prompt solution.
+
+----------------------------
+REQUIREMENTS
+----------------------------
+
+Build a Python script that includes:
+
+1. FIVE distinct agents:
+   - PRAnalyzer
+   - QualityReviewer
+   - SecurityAgent
+   - TestAgent
+   - Aggregator
+
+2. Each agent must:
+   - Have a clearly defined responsibility
+   - Use its own prompt (no shared generic prompt)
+   - Return structured JSON output
+
+3. The system must:
+   - Accept a PR diff (not full code)
+   - Parse the diff into:
+     {
+       "added": [],
+       "removed": [],
+       "context": []
+     }
+   - Ensure ALL agents focus primarily on "added" lines
+
+4. Include an orchestrator function:
+   run_pipeline(diff)
+   which:
+   - calls each agent in sequence
+   - passes outputs forward
+   - produces a final structured PR review
+
+----------------------------
+AGENT RESPONSIBILITIES
+----------------------------
+
+1. PRAnalyzer
+   - Summarizes the PR
+   - Identifies change type (feature, bugfix, refactor)
+   - Explains behavioral impact
+
+2. QualityReviewer
+   - Finds code quality issues ONLY in added/modified code
+   - Focus on readability, maintainability, logic flaws
+
+3. SecurityAgent
+   - Detects security risks introduced by the diff
+   - Ignore pre-existing issues unless worsened
+
+4. TestAgent
+   - Suggests missing test cases for new/changed logic
+   - Focus on edge cases and regressions
+
+5. Aggregator
+   - Combines all outputs
+   - Produces final structured review:
+     {
+       "summary": "",
+       "key_findings": [],
+       "issues": [],
+       "security_risks": [],
+       "test_recommendations": [],
+       "final_verdict": "approve | request_changes",
+       "confidence": "low | medium | high"
+     }
+
+----------------------------
+LLM INTEGRATION
+----------------------------
+
+- Use OpenAI API if available
+- Otherwise include a mock fallback function
+- Keep temperature low (0.2)
+
+----------------------------
+CONSTRAINTS
+----------------------------
+
+- Keep code simple and readable 
+- No external frameworks like Langchain, CrewAI etc required 
+- No UI or deployment
+- Hardcoded sample diff is fine
+- Add tool call if needed
+
+----------------------------
+DELIVERABLE
+----------------------------
+
+Provide:
+1. Complete Python script
+2. Clear agent classes
+3. Diff parsing function
+4. Orchestrator
+5. Sample input and execution
+
+----------------------------
+IMPORTANT
+----------------------------
+
+- This must be a TRUE multi-agent system (not a single LLM call)
+- Each agent must have its OWN prompt and logic
+- Ensure diff-aware reasoning in every agent
+- Use structured JSON outputs everywhere
